@@ -1,7 +1,6 @@
-import 'dart:convert';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart';
 import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/utils/constants.dart';
 import 'package:http/http.dart' as http;
@@ -10,21 +9,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert' as convert;
 
 class InformationList extends StatefulWidget {
+  const InformationList({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _InformationListState createState() => _InformationListState();
 }
 
 class _InformationListState extends State<InformationList> {
   int activeIndex = 0;
-  var stCekOrderan = false;
-  String statusTambang = 'Loading ..';
-  String statusRentalMobil = 'Loading ..';
   late List<Map<String, dynamic>> dataJsonFaskes;
 
   @override
   void initState() {
     super.initState();
-    dataJsonFaskes = []; // Inisialisasi dengan list kosong
+    dataJsonFaskes = [];
     cekOrder();
   }
 
@@ -75,7 +74,7 @@ class _InformationListState extends State<InformationList> {
                               width: 20.0,
                             ),
                             Text(
-                              "List Informasi",
+                              "Fasilitas Layanan Kesehatan",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge
@@ -119,9 +118,12 @@ class _InformationListState extends State<InformationList> {
   }
 
   Future<void> cekOrder() async {
-    Position? position = await _getCurrentLocation();
+    LocationData? position = await _getCurrentLocation();
     if (position != null) {
-      print('Latitude: ${position.latitude}, Longitude: ${position.longitude}');
+      if (kDebugMode) {
+        print(
+            'Latitude: ${position.latitude}, Longitude: ${position.longitude}');
+      }
 
       final prefs = await SharedPreferences.getInstance();
       final String? token = prefs.getString('token');
@@ -136,30 +138,18 @@ class _InformationListState extends State<InformationList> {
         },
         headers: <String, String>{
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'Authorization': 'Bearer $token', // Include Bearer token in headers
+          'Authorization': 'Bearer $token',
         },
       );
 
-      print("Status Code Response : ${response.statusCode}");
       if (response.statusCode == 200) {
         var jsonResponse =
             convert.jsonDecode(response.body) as Map<String, dynamic>;
-        var itemCount = jsonResponse['message'];
-
-        // final String res = response.body;
-        // Map<String, dynamic> myBody = jsonDecode(response.body);
-
         setState(() {
-          // dataJsonFaskes = List<Map<String, dynamic>>.from(myBody['data']);
           dataJsonFaskes = (jsonResponse['data'] as List<dynamic>?)
-                  ?.cast<
-                      Map<String,
-                          dynamic>>() // Cast the list elements to Map<String, dynamic>
-                  .toList() // Convert to List<Map<String, dynamic>> or provide a default value if null
-              ??
+                  ?.cast<Map<String, dynamic>>()
+                  .toList() ??
               [];
-          print(jsonResponse);
-          print(position);
         });
       }
     } else {
@@ -170,16 +160,49 @@ class _InformationListState extends State<InformationList> {
     }
   }
 
-  Future<Position?> _getCurrentLocation() async {
-    try {
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
+  Future<LocationData?> _getCurrentLocation() async {
+    Location location = Location();
 
-      return position;
+    try {
+      bool serviceEnabled = await location.serviceEnabled();
+      if (!serviceEnabled) {
+        serviceEnabled = await location.requestService();
+        if (!serviceEnabled) {
+          return null;
+        }
+      }
+
+      PermissionStatus permissionStatus = await location.hasPermission();
+      if (permissionStatus == PermissionStatus.denied) {
+        permissionStatus = await location.requestPermission();
+        if (permissionStatus != PermissionStatus.granted) {
+          return null;
+        }
+      }
+
+      return await location.getLocation();
     } catch (e) {
-      print("Error: $e");
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content:
+              Text("Terjadi kesalahan tidak dapat mendapatkan lokasi anda ")));
+      if (kDebugMode) {
+        print("Error getting location: $e");
+      }
       return null;
     }
   }
+
+  // Future<Position?> _getCurrentLocation() async {
+  //   try {
+  //     Position position = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high,
+  //     );
+
+  //     return position;
+  //   } catch (e) {
+  //     print("Error: $e");
+  //     return null;
+  //   }
+  // }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:psc_119_ss/config.dart';
@@ -44,189 +45,187 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SingleChildScrollView(
-                child: Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16.0,
-                          vertical: 15.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacement(context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) {
-                                  return Home();
-                                }));
-                              },
-                              child: const Icon(
-                                Icons.keyboard_backspace_rounded,
-                                color: Colors.white,
-                              ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 15.0,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                return const Home();
+                              }));
+                            },
+                            child: const Icon(
+                              Icons.keyboard_backspace_rounded,
+                              color: Colors.white,
                             ),
-                            SizedBox(
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            "Masukkan data diri",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40.0,
+                    ),
+                    Flexible(
+                      child: Container(
+                        width: double.infinity,
+                        constraints: BoxConstraints(
+                          minHeight: MediaQuery.of(context).size.height - 180.0,
+                        ),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
+                          ),
+                          color: Colors.white,
+                        ),
+                        padding: const EdgeInsets.all(24.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            // Lets make a generic input widget
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("Nama"),
+                                const SizedBox(height: 5.0),
+                                Container(
+                                  height: ScreenUtil().setHeight(48.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: TextFormField(
+                                    controller: _controller.nameController,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      prefixIcon: const Icon(
+                                          Icons.account_circle_outlined),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(74, 77, 84, 0.2),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Constants.primaryColor,
+                                        ),
+                                      ),
+                                      hintText: "Nama anda",
+                                      hintStyle: const TextStyle(
+                                        fontSize: 14.0,
+                                        color:
+                                            Color.fromRGBO(105, 108, 121, 0.7),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+
+                            const SizedBox(
+                              height: 25.0,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text("No Telepon"),
+                                const SizedBox(height: 5.0),
+                                Container(
+                                  height: ScreenUtil().setHeight(48.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: TextFormField(
+                                    controller: _controller.phoneController,
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                      prefixIcon:
+                                          const Icon(Icons.contact_phone),
+                                      enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(74, 77, 84, 0.2),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Constants.primaryColor,
+                                        ),
+                                      ),
+                                      hintText: "No Telepon / WhatsApp",
+                                      hintStyle: const TextStyle(
+                                        fontSize: 14.0,
+                                        color:
+                                            Color.fromRGBO(105, 108, 121, 0.7),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            // SizedBox(
+                            //   height: 15.0,
+                            // ),
+                            // GestureDetector(
+                            //   onTap: () {},
+                            //   child: Text(
+                            //     "Forgot Password?",
+                            //     textAlign: TextAlign.right,
+                            //     style: TextStyle(
+                            //       color: Constants.primaryColor,
+                            //       fontWeight: FontWeight.w600,
+                            //     ),
+                            //   ),
+                            // ),
+                            const SizedBox(
                               height: 20.0,
                             ),
-                            Text(
-                              "Masukkan data diri",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline6
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
+
+                            (!_controller.isLoading)
+                                ? AppButton(
+                                    type: ButtonType.PRIMARY,
+                                    text: "Mulai",
+                                    onPressed: _login,
+                                  )
+                                : const SizedBox(
+                                    height: 32,
+                                    width: 32,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.blue,
+                                      strokeWidth: 3,
+                                    ),
                                   ),
-                            )
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 40.0,
-                      ),
-                      Flexible(
-                        child: Container(
-                          width: double.infinity,
-                          constraints: BoxConstraints(
-                            minHeight:
-                                MediaQuery.of(context).size.height - 180.0,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.0),
-                              topRight: Radius.circular(30.0),
-                            ),
-                            color: Colors.white,
-                          ),
-                          padding: EdgeInsets.all(24.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              // Lets make a generic input widget
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("Nama"),
-                                  const SizedBox(height: 5.0),
-                                  Container(
-                                    height: ScreenUtil().setHeight(48.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: TextFormField(
-                                      controller: _controller.nameController,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        prefixIcon: const Icon(
-                                            Icons.account_circle_outlined),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color:
-                                                Color.fromRGBO(74, 77, 84, 0.2),
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Constants.primaryColor,
-                                          ),
-                                        ),
-                                        hintText: "Nama anda",
-                                        hintStyle: const TextStyle(
-                                          fontSize: 14.0,
-                                          color: Color.fromRGBO(
-                                              105, 108, 121, 0.7),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-
-                              SizedBox(
-                                height: 25.0,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("No Telepon"),
-                                  const SizedBox(height: 5.0),
-                                  Container(
-                                    height: ScreenUtil().setHeight(48.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: TextFormField(
-                                      controller: _controller.phoneController,
-                                      decoration: InputDecoration(
-                                        prefixIcon:
-                                            const Icon(Icons.contact_phone),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color:
-                                                Color.fromRGBO(74, 77, 84, 0.2),
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Constants.primaryColor,
-                                          ),
-                                        ),
-                                        hintText: "No Telepon / WhatsApp",
-                                        hintStyle: const TextStyle(
-                                          fontSize: 14.0,
-                                          color: Color.fromRGBO(
-                                              105, 108, 121, 0.7),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              // SizedBox(
-                              //   height: 15.0,
-                              // ),
-                              // GestureDetector(
-                              //   onTap: () {},
-                              //   child: Text(
-                              //     "Forgot Password?",
-                              //     textAlign: TextAlign.right,
-                              //     style: TextStyle(
-                              //       color: Constants.primaryColor,
-                              //       fontWeight: FontWeight.w600,
-                              //     ),
-                              //   ),
-                              // ),
-                              SizedBox(
-                                height: 20.0,
-                              ),
-
-                              (!_controller.isLoading)
-                                  ? AppButton(
-                                      type: ButtonType.PRIMARY,
-                                      text: "Mulai",
-                                      onPressed: _login,
-                                    )
-                                  : const SizedBox(
-                                      height: 32,
-                                      width: 32,
-                                      child: CircularProgressIndicator(
-                                        color: Colors.blue,
-                                        strokeWidth: 3,
-                                      ),
-                                    ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
               ),
             ],
@@ -262,9 +261,11 @@ class _LoginState extends State<Login> {
       String resToken = jsonResponse['data']['token'];
       String resName = jsonResponse['data']['name'];
       String resPhone = jsonResponse['data']['phone'];
-      print('res token sekarang: ${resToken}.');
-      print('res resPhone sekarang: ${resName}.');
-      print('res resPhone sekarang: ${resPhone}.');
+      if (kDebugMode) {
+        print('res token sekarang: ${resToken}.');
+        print('res resPhone sekarang: ${resName}.');
+        print('res resPhone sekarang: ${resPhone}.');
+      }
       final prefe = await SharedPreferences.getInstance();
       await prefe.setString('token', resToken);
       await prefe.setString('nama', resName);
@@ -273,12 +274,12 @@ class _LoginState extends State<Login> {
 
       print(prefe.getString('token'));
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MainUser()));
+          context, MaterialPageRoute(builder: (context) => const MainUser()));
       // }
       print('Number of books about http: $itemCount.');
     } else {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Terjadi kesalahan")));
+          .showSnackBar(const SnackBar(content: Text("Terjadi kesalahan")));
       print('Request failed with status: ${response.statusCode}.');
     }
 

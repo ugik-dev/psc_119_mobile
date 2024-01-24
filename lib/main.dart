@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:psc_119_ss/module/login/login_controller_two.dart';
 import 'package:psc_119_ss/pages/home.dart';
 import 'package:psc_119_ss/pages/main_user.dart';
 // import 'home_page.dart';
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: const Size(375, 812),
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -36,10 +35,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   bool visibilityPass = false;
-  final LoginControllerTwo _controller = LoginControllerTwo();
   Future<void> cekToken() async {
     final prefs = await SharedPreferences.getInstance();
     final String? token = prefs.getString('token');
@@ -47,10 +45,11 @@ class _MainPageState extends State<MainPage> {
     debugPrint('token running cek token');
     if (token != null) {
       debugPrint('ada tokne $token');
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => MainUser(),
+            builder: (context) => const MainUser(),
           ));
     } else {
       debugPrint('tidak ada token');
@@ -67,7 +66,7 @@ class _MainPageState extends State<MainPage> {
     return FutureBuilder(
         future: cekToken(),
         builder: (context, _) {
-          return Home();
+          return const Home();
         });
   }
 }

@@ -4,7 +4,10 @@ import 'package:psc_119_ss/widgets/request_call_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RequestCall extends StatefulWidget {
+  const RequestCall({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _RequestCallState createState() => _RequestCallState();
 }
 
@@ -44,11 +47,7 @@ class _RequestCallState extends State<RequestCall> {
                               padding:
                                   const EdgeInsets.fromLTRB(10, 10, 10, 300),
                               height: 1300,
-
-                              // child: Center(
-                              // lets make a widget for the cards
                               child: RequestCallWidget(),
-                              // ),
                             ),
                           ],
                         ),

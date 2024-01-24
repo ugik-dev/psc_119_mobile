@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_html/flutter_html.dart';
 import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/news/detail.dart';
 
@@ -26,7 +27,10 @@ class NewsItem {
 }
 
 class ListNews extends StatefulWidget {
+  const ListNews({Key? key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _ListNewsState createState() => _ListNewsState();
 }
 
@@ -75,16 +79,16 @@ class _ListNewsState extends State<ListNews> {
       appBar: AppBar(
         title: Text('Informasi'),
       ),
+      // ignore: unnecessary_null_comparison
       body: newsItems == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: newsItems.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(newsItems[index].judul),
-                  subtitle: Text(newsItems[index].nameContent +
-                      ' \ ' +
-                      newsItems[index].tanggal),
+                  subtitle: Text(
+                      '${newsItems[index].nameContent} - ${newsItems[index].tanggal}'),
                   onTap: () {
                     Navigator.push(
                       context,

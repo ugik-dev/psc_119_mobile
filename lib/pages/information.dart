@@ -1,13 +1,16 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:psc_119_ss/news/list.dart';
 import 'package:psc_119_ss/pages/browser_page.dart';
-import 'package:psc_119_ss/pages/information_list.dart';
+import 'package:psc_119_ss/pages/faskes_list.dart';
 import 'package:psc_119_ss/utils/constants.dart';
-import 'package:psc_119_ss/widgets/latest_orders.dart';
 
 import '../../widgets/card_widget.dart';
 
 class Information extends StatefulWidget {
+  const Information({Key? key}) : super(key: key);
+
   @override
   _InformationState createState() => _InformationState();
 }

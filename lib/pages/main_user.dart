@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:psc_119_ss/pages/information.dart';
@@ -5,15 +7,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:psc_119_ss/pages//psc/req_call.dart';
 import 'package:psc_119_ss/user/profile.dart';
 import 'package:psc_119_ss/pages/dashboard.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class MainUser extends StatefulWidget {
-  // int currentPage;
-  // print(currentPage);
   const MainUser({Key? key}) : super(key: key);
-
   @override
   State<MainUser> createState() => _MainUserState();
 }
@@ -22,10 +21,7 @@ class _MainUserState extends State<MainUser> {
   int currentPage = 0;
   List<Widget> pages = [
     Dashboard(),
-    Information(),
-
-    // const Profile(),
-    // SingleOrder(),
+    const Information(),
     RequestCall(),
     Dashboard(),
     const Profile(),
@@ -43,27 +39,37 @@ class _MainUserState extends State<MainUser> {
                   Icon(
                     Icons.home,
                     size: 30.0,
-                    color: currentPage == 0 ? Colors.white : Color(0xFFC8C9CB),
+                    color: currentPage == 0
+                        ? Colors.white
+                        : const Color(0xFFC8C9CB),
                   ),
                   Icon(
                     Icons.newspaper,
                     size: 30.0,
-                    color: currentPage == 1 ? Colors.white : Color(0xFFC8C9CB),
+                    color: (currentPage == 1 || currentPage == 3)
+                        ? Colors.white
+                        : const Color(0xFFC8C9CB),
                   ),
                   Icon(
                     Icons.phone,
                     size: 30.0,
-                    color: currentPage == 2 ? Colors.white : Color(0xFFC8C9CB),
+                    color: currentPage == 2
+                        ? Colors.white
+                        : const Color(0xFFC8C9CB),
                   ),
                   Icon(
                     Icons.chat_outlined,
                     size: 30.0,
-                    color: currentPage == 3 ? Colors.white : Color(0xFFC8C9CB),
+                    color: currentPage == 3
+                        ? Colors.white
+                        : const Color(0xFFC8C9CB),
                   ),
                   Icon(
                     Icons.person,
                     size: 30.0,
-                    color: currentPage == 4 ? Colors.white : Color(0xFFC8C9CB),
+                    color: currentPage == 4
+                        ? Colors.white
+                        : const Color(0xFFC8C9CB),
                   ),
                 ],
                 onTap: (index) {
@@ -87,8 +93,8 @@ class _MainUserState extends State<MainUser> {
   }
 
   Future<void> cekToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? namas = prefs.getString('nama');
+    // final prefs = await SharedPreferences.getInstance();
+    // final String? token = prefs.getString('token');
   }
 
   Future<bool> _checkAndRequestPermission() async {
