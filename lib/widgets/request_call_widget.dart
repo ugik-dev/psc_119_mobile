@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/models/reqcall.dart';
 import 'package:psc_119_ss/pages/carwash/neworder.dart';
 import 'package:psc_119_ss/pages/psc/callpage.dart';
@@ -22,7 +23,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggilan darurat ke PSC 119",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '1',
             );
           }));
@@ -39,7 +40,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggilan Ambulance",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '2',
             );
           }));
@@ -56,7 +57,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggilan darurat ke PSC 119",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '4',
             );
           }));
@@ -73,7 +74,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggilan darurat ke PSC 119",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '5',
             );
           }));
@@ -90,7 +91,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggil Kepolisian",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '3',
             );
           }));
@@ -107,7 +108,7 @@ class RequestCallWidget extends StatelessWidget {
             return const CallPage(
               title: "Panggilan Taruna Siaga Bencana",
               imagePath: "assets/images/psc.png",
-              urlApi: 'http://192.168.18.83:8000/api/request',
+              urlApi: '${AppConfig.base_url_api}/api/request',
               jenis: '6',
             );
           }));

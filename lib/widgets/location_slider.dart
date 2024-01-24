@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/models/location.dart';
 import 'package:psc_119_ss/pages/psc/callpage.dart';
 
@@ -21,7 +22,7 @@ class LocationSlider extends StatelessWidget {
               return const CallPage(
                 title: "Panggilan darurat ke PSC 119",
                 imagePath: "assets/images/psc.png",
-                urlApi: 'http://192.168.18.83:8000/api/request',
+                urlApi: '${AppConfig.base_url_api}/api/request',
                 jenis: '1',
               );
             }));
@@ -37,7 +38,7 @@ class LocationSlider extends StatelessWidget {
               return const CallPage(
                 title: "Panggilan ambulan dari PSC 119",
                 imagePath: "assets/images/ambulance.png",
-                urlApi: 'http://192.168.18.83:8000/api/request',
+                urlApi: '${AppConfig.base_url_api}/api/request',
                 jenis: '2',
               );
             }));
@@ -53,7 +54,7 @@ class LocationSlider extends StatelessWidget {
               return const CallPage(
                 title: "Panggilan Damkar",
                 imagePath: "assets/images/damkar.png",
-                urlApi: 'http://192.168.18.83:8000/api/request',
+                urlApi: '${AppConfig.base_url_api}/api/request',
                 jenis: '4',
               );
             }));

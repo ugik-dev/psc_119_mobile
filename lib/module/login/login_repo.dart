@@ -1,11 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:psc_119_ss/config.dart';
 
 class LoginRepo {
   Future<http.Response> login(String name, String phone) async {
     try {
       final response = await http.post(
-        Uri.parse('http://192.168.18.83:8000/api/login'),
+        Uri.parse('${AppConfig.base_url_api}/api/login'),
         headers: <String, String>{
           'Content-Type':
               'application/json; charset=UTF-8', // Updated content type

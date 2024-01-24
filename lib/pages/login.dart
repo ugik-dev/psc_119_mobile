@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/pages/dashboard.dart';
 import 'package:psc_119_ss/pages/home.dart';
 import 'package:psc_119_ss/pages/main_user.dart';
@@ -250,8 +251,9 @@ class _LoginState extends State<Login> {
     var phone = _controller.phoneController.text;
     print('nama sekarang: ${name}.');
     print('phone sekarang: ${phone}.');
-    var url = Uri.http('192.168.18.83:8000', '/api/login');
-    // var url = Uri.parse('http://192.168.18.83:8000');
+    var url = Uri.parse(
+      '${AppConfig.base_url_api}/api/login',
+    );
     // // Await the http get response, then decode the json-formatted response.
     var response = await http.post(url, body: {'name': name, 'phone': phone});
     setState(() {

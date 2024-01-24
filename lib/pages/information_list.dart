@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/utils/constants.dart';
 import 'package:psc_119_ss/widgets/faskes_card.dart';
 import 'package:http/http.dart' as http;
@@ -127,7 +128,7 @@ class _InformationListState extends State<InformationList> {
 
       final response = await http.post(
         Uri.parse(
-          "http://192.168.18.83:8000/api/faskes",
+          '${AppConfig.base_url_api}/api/faskes',
         ),
         body: {
           'long': position.longitude.toString(),
