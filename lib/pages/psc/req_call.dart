@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:psc_119_ss/utils/constants.dart';
-import 'package:psc_119_ss/pages/mitra/register_tambang.dart';
-
-import 'package:psc_119_ss/widgets/card_widget.dart';
 import 'package:psc_119_ss/widgets/request_call_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/utils/constants.dart';
-import 'package:psc_119_ss/widgets/faskes_card.dart';
 import 'package:http/http.dart' as http;
 import 'package:psc_119_ss/widgets/faskes_list_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert' as convert;
 
 class InformationList extends StatefulWidget {
   @override
@@ -140,12 +140,26 @@ class _InformationListState extends State<InformationList> {
         },
       );
 
+      print("Status Code Response : ${response.statusCode}");
       if (response.statusCode == 200) {
-        final String res = response.body;
-        Map<String, dynamic> myBody = jsonDecode(response.body);
+        var jsonResponse =
+            convert.jsonDecode(response.body) as Map<String, dynamic>;
+        var itemCount = jsonResponse['message'];
+
+        // final String res = response.body;
+        // Map<String, dynamic> myBody = jsonDecode(response.body);
 
         setState(() {
-          dataJsonFaskes = List<Map<String, dynamic>>.from(myBody['data']);
+          // dataJsonFaskes = List<Map<String, dynamic>>.from(myBody['data']);
+          dataJsonFaskes = (jsonResponse['data'] as List<dynamic>?)
+                  ?.cast<
+                      Map<String,
+                          dynamic>>() // Cast the list elements to Map<String, dynamic>
+                  .toList() // Convert to List<Map<String, dynamic>> or provide a default value if null
+              ??
+              [];
+          print(jsonResponse);
+          print(position);
         });
       }
     } else {

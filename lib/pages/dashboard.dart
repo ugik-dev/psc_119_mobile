@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:psc_119_ss/news/list.dart';
 import 'package:psc_119_ss/pages/information_list.dart';
 import 'package:psc_119_ss/utils/constants.dart';
-import 'package:psc_119_ss/pages/mitra/register_tambang.dart';
 import 'package:psc_119_ss/widgets/card_widget.dart';
 import 'package:psc_119_ss/widgets/location_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

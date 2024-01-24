@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/models/reqcall.dart';
-import 'package:psc_119_ss/pages/carwash/neworder.dart';
 import 'package:psc_119_ss/pages/psc/callpage.dart';
 
 class RequestCallWidget extends StatelessWidget {

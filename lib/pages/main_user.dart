@@ -1,9 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:psc_119_ss/pages/information.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:psc_119_ss/pages/mitra/pilih_mitra.dart';
 import 'package:psc_119_ss/pages//psc/req_call.dart';
 import 'package:psc_119_ss/user/profile.dart';
 import 'package:psc_119_ss/pages/dashboard.dart';
@@ -29,7 +27,7 @@ class _MainUserState extends State<MainUser> {
     // const Profile(),
     // SingleOrder(),
     RequestCall(),
-    PilihMitra(),
+    Dashboard(),
     const Profile(),
   ];
   @override

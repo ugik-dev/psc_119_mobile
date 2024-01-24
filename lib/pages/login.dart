@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:psc_119_ss/config.dart';
-import 'package:psc_119_ss/pages/dashboard.dart';
 import 'package:psc_119_ss/pages/home.dart';
 import 'package:psc_119_ss/pages/main_user.dart';
-// import 'package:flutter_icons/flutter_icons.dart';
 import 'package:psc_119_ss/utils/constants.dart';
-import 'package:psc_119_ss/utils/helper.dart';
 import 'package:psc_119_ss/widgets/app_button.dart';
-import 'package:psc_119_ss/widgets/input_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert' as convert;
 
 import 'package:http/http.dart' as http;
 import '../module/login/login_controller.dart';
-import '../widgets/input_controller.dart';
 
 class Login extends StatefulWidget {
   // const LoginPage({Key? key}) : super(key: key);

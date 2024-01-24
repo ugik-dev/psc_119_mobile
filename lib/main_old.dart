@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:psc_119_ss/home/main_home.dart';
-import 'package:psc_119_ss/home/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: MainHomePage(),
+      home: const MainHomePage(),
       // home: LoginPage(),
     );
   }
