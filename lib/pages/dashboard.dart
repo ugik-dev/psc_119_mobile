@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:psc_119_ss/faskes/list.dart';
 import 'package:psc_119_ss/news/list.dart';
 import 'package:psc_119_ss/pages/faskes_list.dart';
 import 'package:psc_119_ss/utils/constants.dart';
@@ -179,7 +180,7 @@ class _DashboardState extends State<Dashboard> {
                                   onTap: () {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
-                                      return const InformationList();
+                                      return const ListFaskes();
                                     }));
                                   },
                                   logoPath: "assets/images/hospital.png",

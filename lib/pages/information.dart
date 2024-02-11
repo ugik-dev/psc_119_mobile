@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:psc_119_ss/faskes/list.dart';
 import 'package:psc_119_ss/news/list.dart';
 import 'package:psc_119_ss/pages/browser_page.dart';
 import 'package:psc_119_ss/pages/faskes_list.dart';
@@ -78,7 +79,7 @@ class _InformationState extends State<Information> {
                 Container(
                   width: double.infinity,
                   constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height - 150.0,
+                    minHeight: MediaQuery.of(context).size.height - 100.0,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -129,7 +130,7 @@ class _InformationState extends State<Information> {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return InformationList();
+                                  return ListFaskes();
                                 }));
                               },
                               logoPath: "assets/images/washlogo.png",

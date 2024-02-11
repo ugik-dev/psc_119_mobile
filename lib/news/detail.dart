@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:psc_119_ss/config.dart';
 import 'package:psc_119_ss/news/list.dart';
 
 class NewsItemDetailPage extends StatelessWidget {
@@ -9,19 +10,30 @@ class NewsItemDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("sampul : " +
+        '${AppConfig.base_url_api}/storage/upload/content/' +
+        newsItem.sampul);
     return Scaffold(
       appBar: AppBar(
         title: Text(newsItem.judul),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Tanggal: ${newsItem.tanggal}'),
-            SizedBox(height: 10),
-            Html(data: newsItem.content),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Tanggal: ${newsItem.tanggal}'),
+              const SizedBox(height: 10),
+              if (newsItem.sampul != null)
+                Center(
+                  child: Image.network(
+                      '${AppConfig.base_url_api}/storage/upload/content/' +
+                          newsItem.sampul),
+                ),
+              Html(data: newsItem.content),
+            ],
+          ),
         ),
       ),
     );

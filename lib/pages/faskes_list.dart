@@ -91,23 +91,23 @@ class _InformationListState extends State<InformationList> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  Flexible(
-                    child: Container(
-                      width: double.infinity,
-                      constraints: BoxConstraints(
-                        minHeight: MediaQuery.of(context).size.height - 150.0,
-                      ),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(0.0),
-                          topRight: Radius.circular(0.0),
-                        ),
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.all(1.0),
-                      child: FaskesListWidget(dataFaskes: dataJsonFaskes),
+                  // Flexible(
+                  Container(
+                    width: double.infinity,
+                    constraints: BoxConstraints(
+                      maxHeight: MediaQuery.of(context).size.height - 100.0,
                     ),
-                  )
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(0.0),
+                        topRight: Radius.circular(0.0),
+                      ),
+                      color: Colors.white,
+                    ),
+                    padding: const EdgeInsets.all(1.0),
+                    child: FaskesListWidget(dataFaskes: dataJsonFaskes),
+                  ),
+                  // )
                 ],
               ),
             ),

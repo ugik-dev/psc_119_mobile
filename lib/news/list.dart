@@ -13,6 +13,7 @@ class NewsItem {
   final String slug;
   final String content;
   final String tanggal;
+  final String sampul;
   final String nameContent;
 
   NewsItem({
@@ -22,6 +23,7 @@ class NewsItem {
     required this.slug,
     required this.content,
     required this.tanggal,
+    required this.sampul,
     required this.nameContent,
   });
 }
@@ -54,11 +56,12 @@ class _ListNewsState extends State<ListNews> {
         newsItems = dataList
             .map((item) => NewsItem(
                   id: item['id'],
-                  refContentId: item['ref_content_id'],
+                  refContentId: int.parse(item['ref_content_id']),
                   judul: item['judul'],
                   slug: item['slug'],
                   content: item['content'],
                   tanggal: item['tanggal'],
+                  sampul: item['sampul'],
                   nameContent: item['name_content'],
                 ))
             .toList();
